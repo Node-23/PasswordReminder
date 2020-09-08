@@ -25,7 +25,7 @@ public class FileManager {
     }
 
     public static boolean FileExist() {
-        boolean exists = (new File("C://Matheus//Test.txt")).exists();
+        boolean exists = (new File("C://Test.txt")).exists();
         return exists;
     }
 
@@ -39,7 +39,7 @@ public class FileManager {
 
     public static void loadFile() throws IOException {
         if (FileExist()) {
-            String data = read("C://Matheus//Test.txt");
+            String data = read("C://Test.txt");
             String dataSplited[] = data.split("\n");
             for (int i = 0; i < dataSplited.length; i++) {
                 String passwordObj[] = dataSplited[i].split("-");

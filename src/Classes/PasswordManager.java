@@ -9,6 +9,7 @@ public class PasswordManager {
     public static void addPassword(String local, String userName, String password) throws IOException {
         PasswordObject passwordObject = new PasswordObject(local, userName, password);
         ArrayManager.passwordList.add(passwordObject);
+        JOptionPane.showMessageDialog(null, "successful added", "Password Reminder",JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void deletePassword(String local) {

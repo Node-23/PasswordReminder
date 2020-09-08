@@ -9,7 +9,7 @@ public class PasswordManager {
     public static void addPassword(String local, String userName, String password) throws IOException {
         PasswordObject passwordObject = new PasswordObject(local, userName, password);
         ArrayManager.passwordList.add(passwordObject);
-        JOptionPane.showMessageDialog(null, "successful added", "Password Reminder",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "successful added", "Password Reminder", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void deletePassword(String local) {
@@ -22,8 +22,17 @@ public class PasswordManager {
         }
     }
 
-    public static void loadList() {
-
+    public static void change(String local) {
+        int index = ArrayManager.findLocal(local);
+        if (index == -1) {
+            JOptionPane.showMessageDialog(null, "Local does not exists!", "Password Reminder",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            String userName = JOptionPane.showInputDialog(null, "UserName: ", JOptionPane.QUESTION_MESSAGE);
+            String password = JOptionPane.showInputDialog(null, "Password: ", JOptionPane.QUESTION_MESSAGE);
+            ArrayManager.passwordList.remove(index);
+            ArrayManager.passwordList.add(index, new PasswordObject(local, userName, password));
+        }
     }
 
 }

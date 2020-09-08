@@ -33,7 +33,7 @@ public class ArrayManager {
         String logList = "";
         int count = 1;
         for (PasswordObject list : passwordList) {
-            logList += Integer.toString(count)+"- " + list + "\n";
+            logList += "----- " + Integer.toString(count)+ " " + list + "\n";
             count++;
         }
         JOptionPane.showMessageDialog(null,logList, "Password Reminder",

@@ -37,7 +37,7 @@ public class PasswordObject {
 
     @Override
     public String toString() {
-        return getLocal() + "\n"+ "UserName = "+ getUsername()+ "\n"+ "password = " + getPassword();
+        return getLocal()+ " -----" + "\n"+ "UserName = "+ getUsername()+ "\n"+ "password = " + getPassword();
     }
 
 }

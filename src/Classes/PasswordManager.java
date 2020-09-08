@@ -14,24 +14,22 @@ public class PasswordManager {
 
     public static void deletePassword(String local) {
         int index = ArrayManager.findLocal(local);
-        if (index == -1) {
-            JOptionPane.showMessageDialog(null, "Local does not exists!", "Password Reminder",
-                    JOptionPane.ERROR_MESSAGE);
-        } else {
-            ArrayManager.passwordList.remove(index);
-        }
+        ArrayManager.passwordList.remove(index);
+        JOptionPane.showMessageDialog(null, "Local deleted!", "Password Reminder", JOptionPane.INFORMATION_MESSAGE);
+
     }
 
     public static void change(String local) {
         int index = ArrayManager.findLocal(local);
-        if (index == -1) {
-            JOptionPane.showMessageDialog(null, "Local does not exists!", "Password Reminder",
-                    JOptionPane.ERROR_MESSAGE);
-        } else {
-            String userName = JOptionPane.showInputDialog(null, "UserName: ", JOptionPane.QUESTION_MESSAGE);
-            String password = JOptionPane.showInputDialog(null, "Password: ", JOptionPane.QUESTION_MESSAGE);
+        String userName = View.dataNullVerification("", true);
+        String password = View.dataNullVerification(userName, false);
+        if (userName != null && password != null) {
             ArrayManager.passwordList.remove(index);
             ArrayManager.passwordList.add(index, new PasswordObject(local, userName, password));
+            JOptionPane.showMessageDialog(null, "Local changed!", "Password Reminder", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Operation canceled!", "Password Reminder",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

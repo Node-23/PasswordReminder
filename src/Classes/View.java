@@ -8,10 +8,12 @@ public class View {
     public static void viewer() throws IOException {
         while (true) {
             int option;
-            option = Integer.parseInt(JOptionPane.showInputDialog(null,
-                    "-OPTIONS-\n" + "1- List passwords\n" + "2- Add a password\n" + "3- Delete a password\n"
-                            + "4- Change a password\n" + "0- Exit\n",
-                    "PasswordReminder", JOptionPane.QUESTION_MESSAGE));
+            String choice = JOptionPane.showInputDialog(null,
+            "-OPTIONS-\n" + "1- List passwords\n" + "2- Add a password\n" + "3- Delete a password\n"
+                    + "4- Change a password\n" + "0- Exit\n",
+            "PasswordReminder", JOptionPane.QUESTION_MESSAGE);
+            nullOption(choice);
+            option = Integer.parseInt(choice);
             switch (option) {
                 case 1:
                     ArrayManager.printList();
@@ -33,12 +35,18 @@ public class View {
                     JOptionPane.showMessageDialog(null, "Bye", "Password Reminder", JOptionPane.INFORMATION_MESSAGE);
                     System.exit(0);
                     break;
-
+            
                 default:
                     JOptionPane.showMessageDialog(null, "Invalid option!", "Password Reminder",
                             JOptionPane.ERROR_MESSAGE);
                     break;
             }
+        }
+    }
+
+    public static void nullOption(String option){
+       if(option == null){
+            System.exit(0);
         }
     }
 

@@ -14,7 +14,7 @@ public class FileManager {
     public static String path;
 
     public static void write(String text, String path) throws IOException {
-        File file = new File(path + "\\PR.txt");
+        File file = new File(path + "\\PR.psw");
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(text);
         fileWriter.flush();
@@ -22,14 +22,14 @@ public class FileManager {
     }
 
     public static String read(String fileLocationString) throws IOException {
-        Path data = Paths.get(fileLocationString + "\\PR.txt");
+        Path data = Paths.get(fileLocationString + "\\PR.psw");
         byte[] content = Files.readAllBytes(data);
         String text = new String(content);
         return text;
     }
 
     public static boolean FileExist(String path) {
-        return (new File(path + "\\PR.txt")).exists();
+        return (new File(path + "\\PR.psw")).exists();
 
     }
 

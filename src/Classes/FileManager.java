@@ -47,6 +47,9 @@ public class FileManager {
             String dataSplited[] = data.split("\n");
             for (int i = 0; i < dataSplited.length; i++) {
                 String passwordObj[] = dataSplited[i].split("-");
+                if(passwordObj.length <2){
+                    continue;
+                }
                 ArrayManager.passwordList.add(new PasswordObject(passwordObj[0], passwordObj[1], passwordObj[2]));
             }
         }else{
@@ -55,12 +58,18 @@ public class FileManager {
     }
 
     public static void directoryChooser() {
+        do{
         int operation;
         JFileChooser directory = new JFileChooser();
         directory.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         operation = directory.showSaveDialog(null);
         directoryChooserError(operation);
         path = directory.getSelectedFile().getAbsolutePath();
+        if(path.equals("C:\\")){
+            JOptionPane.showMessageDialog(null, "C:\\ is not acessible!", "Password Reminder", JOptionPane.ERROR_MESSAGE); 
+        }
+        else{break;}
+        }while(true);
     }
 
     public static void directoryChooserError(int operation) {
@@ -79,7 +88,4 @@ public class FileManager {
         path = read(dir);
         loadFile();
     }
-
-    
-
 }
